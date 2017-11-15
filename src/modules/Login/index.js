@@ -5,8 +5,22 @@ export default class LoginPage extends Component {
 	render() {
 		return (
 			<div className="container">
-				<h3>Login</h3><br />
-				<p className="well">This is a sample registration page. You can edit <code>src/modules/Login/index.js</code> to edit this page.</p>
+				<h3><b>Login</b></h3><br />
+				<div className="well login_form">
+					<form>
+						<div className="form-row">
+							<label> Username: </label>
+							<span className="form-input"><input type="text" id="username"/></span>
+						</div>
+						<br/>
+						<div className="form-row">
+							<label> Password: </label>
+							<input type="password" id="password" />
+						</div>
+						<br/>
+						<input type="submit" value="Login" />
+					</form>
+				</div>
 			</div>
 		);
 	}
