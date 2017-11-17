@@ -7,6 +7,7 @@ import LoginPage from './modules/Login';
 import RegisterPage from './modules/Register';
 
 import AddThread from './modules/Threads/addThread';
+import ViewThreadPage from './modules/Threads/view';
 
 export default (
 	<Route path="/" component={App}>
@@ -15,5 +16,6 @@ export default (
 		<Route path="/register" component={RegisterPage} />
 
 		<Route path="/thread/add" component={AddThread} />
+		<Route path="/thread/view" component={ViewThreadPage} />
 	</Route>
 )

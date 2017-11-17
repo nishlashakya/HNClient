@@ -3,6 +3,10 @@ body {
 	margin: 0 auto;
 }
 
+.container {
+	width: inherit;
+}
+
 #root {
 	background: #f6f6f6;
 }
@@ -48,23 +52,32 @@ body {
 	text-decoration: none;
 }
 
-.thread-meta, .thread-link-domain {
+.thread-meta, .thread-link-domain, .thread-comment-meta {
 	font-size: 10px;
   color: #6f6f6f;
 }
 
-.thread-title {
+.thread-title, .thread-comment {
 	color: black;
+	font-size: 12px;
 }
 
 .thread-list-item {
 	margin: 10px 0;
 }
 
+.thread-detail {
+	margin-bottom: 7%;
+}
+
 .login_form, .register_form, .submit_form {
 	width: 400px;
 	align-self: center;
 	margin: auto;
+}
+
+.comment {
+	margin-bottom: 10px;
 }
 
 input {
@@ -99,6 +112,13 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background-color: #cf5300;
+}
+
+#comment-button {
+	height: auto;
+	width: auto;
+	padding: 5px 10px;
+	text-align: center;
 }
 
 hr.footer-hr {
