@@ -81,18 +81,17 @@ body {
 }
 
 input {
-	width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 5px 30px;
+  margin: 10px 0;
+	margin-left: 10%;
   display: inline-block;
   border: 1px solid grey;
   border-radius: 1px;
   box-sizing: border-box;
 }
 input:focus {
-	width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 5px 30px;
+  margin: 10px 20px;
   display: inline-block;
   border: 1px solid #ff6600;
   border-radius: 4px;
@@ -103,11 +102,12 @@ input[type=submit] {
   background-color: #ff6600;
   border: none;
   color: black;
-  padding: 16px 20px;
+  padding: 5px 10px;
 	align-self: center;
   margin: 2px 2px;
   cursor: pointer;
-	width: 40%;
+	width: auto;
+	height: auto;
 }
 
 input[type=submit]:hover {

@@ -1,29 +1,17 @@
-//Example of synchronous action
+import * as userServices from '../services/userServices';
 
-/**
-function loginSuccess(payload) {
-	return {
-		type: 'LOGIN_SUCCESS',
-		payload
-	}
+export function loginUser(data) {
+  return dispatch => {
+    return new Promise((resolve, reject) => {
+      userServices.loginUser(data)
+      .then(data => {
+        dispatch(loginSuccess(data));
+        resolve(data);
+      })
+      .catch(err => {
+        dispatch(loginError(err));
+        reject(err);
+      })
+    });
+  }
 }
-**/
-
-
-//Example of asynchronous action
-
-/**
-export function login(payload) {
-	return (dispatch) => {
-		setTimeout(function() {
-			if(payload.username === 'admin' && payload.password === 'password') {
-				dispatch(loginSuccess(payload));
-			}else {
-				dispatch(loginFailure());
-			}	
-		}, 2000);
-	}
-}
-
-**/
-

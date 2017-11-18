@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export default class LoginPage extends Component {
+class LoginPage extends Component {
+
+	constructor(props) {
+		super(props);
+	}
 
 	render() {
 		return (
@@ -25,3 +32,16 @@ export default class LoginPage extends Component {
 		);
 	}
 }
+
+	const mapStateToProps = (store) => {
+		return {
+
+		}
+	}
+
+	const mapDispatchToProps = (dispatch) => {
+		return bindActionCreators({
+
+		}, dispatch);
+	}
+export default connect(mapStateToProps, mapDispatchToProps) (withRouter(LoginPage))
