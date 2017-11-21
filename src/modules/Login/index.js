@@ -3,6 +3,8 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { loginUser } from '../../actions/userActions';
+
 class LoginPage extends Component {
 
 	constructor(props) {
@@ -41,7 +43,7 @@ class LoginPage extends Component {
 
 	const mapDispatchToProps = (dispatch) => {
 		return bindActionCreators({
-
+			loginUser
 		}, dispatch);
 	}
 export default connect(mapStateToProps, mapDispatchToProps) (withRouter(LoginPage))
