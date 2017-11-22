@@ -1,9 +1,9 @@
 import axios from 'axios';
-import APIConstants from '../constants/APIConstants';
+// import APIConstants from '../constants/APIConstants';
 
 export function loginUser(data) {
   return new Promise((resolve, reject) => {
-    axios.post('http://localhost:3031/users/login', data)
+    axios.post('http://localhost:3001/users/login', data)
     .then(res => (resolve(res)))
     .catch(err => (reject(err.response.data)));
   });
@@ -11,9 +11,9 @@ export function loginUser(data) {
 
 export function registerUser(data) {
   return new Promise((resolve, reject) => {
-    axios.post(APIConstants.REGISTER, data)
+    axios.post('http://localhost:3001/users/register', data)
     .then(res => (resolve(res)))
-    .catch(err => (reject(err.response.data)));
+    .catch(err => (reject(err)));
   });
 
 }
