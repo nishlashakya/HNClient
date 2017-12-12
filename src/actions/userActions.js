@@ -24,6 +24,7 @@ function loginSuccess(res) {
 }
 
 function loginError(err) {
+  console.log(',,,,,,,,,,HERE1', err);
   return {
     type: 'LOGIN_USER_FAIL',
     err

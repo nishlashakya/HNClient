@@ -9,6 +9,27 @@ class LoginPage extends Component {
 
 	constructor(props) {
 		super(props);
+		this.state = {
+			username: '',
+			password: ''
+		}
+	}
+
+	handleChange = (e) => {
+		e.preventDefault();
+		this.setState({
+			[e.target.name] : e.target.value
+		})
+	}
+
+	handleSubmit = (e) => {
+		e.preventDefault();
+		console.log('.............state', this.state);
+		this.props.loginUser(this.state)
+		.then((res) => {
+      this.props.router.push('/');
+			console.log('logged in..............', res);
+		})
 	}
 
 	render() {
@@ -19,15 +40,15 @@ class LoginPage extends Component {
 					<form>
 						<div className="form-row">
 							<label> Username: </label>
-							<span className="form-input"><input type="text" id="username"/></span>
+							<span className="form-input"><input type="text" name="username" value={this.state.username} onChange={this.handleChange}/></span>
 						</div>
 						<br/>
 						<div className="form-row">
 							<label> Password: </label>
-							<input type="password" id="password" />
+							<input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
 						</div>
 						<br/>
-						<input type="submit" value="Login" />
+						<input type="submit" value="Login" onClick={this.handleSubmit} />
 					</form>
 				</div>
 			</div>
@@ -37,7 +58,6 @@ class LoginPage extends Component {
 
 	const mapStateToProps = (store) => {
 		return {
-
 		}
 	}
 
