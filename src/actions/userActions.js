@@ -24,7 +24,6 @@ function loginSuccess(res) {
 }
 
 function loginError(err) {
-  console.log(',,,,,,,,,,HERE1', err);
   return {
     type: 'LOGIN_USER_FAIL',
     err
@@ -59,4 +58,14 @@ function registerUserError(err) {
     type: 'REGISTER_USER_ERROR',
     err
   }
+}
+
+export function logoutUser() {
+  return {
+    type: 'LOGOUT_USER'
+  }
+}
+
+export function getUser() {
+
 }
