@@ -40,7 +40,7 @@ class Header extends Component {
 						</ul>
             :
             <ul className="nav navbar-nav navbar-right">
-              <li><Link to={'/profile'}>{this.props.loggedInUser.username}</Link></li>
+              <li><Link to={'/profile/'+ this.props.loggedInUser._id}>{this.props.loggedInUser.username}</Link></li>
               <li><Link onClick={this.handleLogout}>Logout</Link></li>
             </ul>
           }

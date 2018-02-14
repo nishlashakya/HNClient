@@ -121,6 +121,42 @@ input[type=submit]:hover {
 	text-align: center;
 }
 
+table {
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+
+table {
+    white-space: normal;
+    line-height: normal;
+    font-weight: normal;
+    font-size: medium;
+    font-style: normal;
+    color: -internal-quirk-inherit;
+    text-align: start;
+    font-variant: normal;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+td {
+	padding-right: 30px;
+  padding-bottom: 5px;
+}
+
+.lightFont {
+	font-family: Verdana, Geneva, sans-serif;
+  font-size: 10pt;
+  color: #828282;
+}
+
 hr.footer-hr {
     border: 0;
     height: 2px;

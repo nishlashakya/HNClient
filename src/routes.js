@@ -9,7 +9,7 @@ import RegisterPage from './modules/Register';
 import AddThread from './modules/Threads/addThread';
 import ViewThreadPage from './modules/Threads/view';
 
-import UserProfile from './modules/User/profile';
+import UserProfile from './modules/Users/Profile';
 
 export default (
 	<Route path="/" component={App}>
@@ -20,6 +20,6 @@ export default (
 		<Route path="/thread/add" component={AddThread} />
 		<Route path="/thread/view" component={ViewThreadPage} />
 
-		<Route path="/profile" component={UserProfile} />
+		<Route path="/profile/:id" component={UserProfile} />
 	</Route>
 )

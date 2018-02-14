@@ -1,5 +1,5 @@
 import axios from 'axios';
-import APIConstants from './../constants/APIConstants';
+import APIConstants from '../constants/APIConstants';
 
 // axios.default.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
