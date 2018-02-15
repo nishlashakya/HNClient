@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { add as addThread } from '../../actions/threadActions';
-import { getUser } from '../../actions/userActions';
+import { getUser } from '../../utils/sessionManager';
 
 class AddThread extends Component {
 
@@ -13,7 +13,7 @@ class AddThread extends Component {
 			fields : {
 				title: '',
 				url: '',
-				// createdBy: this.props.loggedInUser.username
+				createdBy: this.props.loggedInUser.username
 			}
 		}
 	}
