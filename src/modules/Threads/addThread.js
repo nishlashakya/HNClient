@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { add as addThread } from '../../actions/threadActions';
+import { getUser } from '../../actions/userActions';
 
 class AddThread extends Component {
 
@@ -11,15 +12,21 @@ class AddThread extends Component {
 		this.state = {
 			fields : {
 				title: '',
-				url: ''
+				url: '',
+				// createdBy: this.props.loggedInUser.username
 			}
 		}
+	}
+
+	componentDidMount = () => {
+		this.props.getUser();
 	}
 
 	handleChange = (e) => {
 		e.preventDefault();
 		this.setState({
 			fields: {
+				...this.state.fields,
 				[e.target.name] : e.target.value
 			}
 		})
@@ -27,6 +34,7 @@ class AddThread extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
+		console.log('states..........', this.state.fields);
 		this.props.addThread(this.state.fields)
 		.then((res) => {
 			console.log('jjjjjjjjjjj', res);
@@ -62,13 +70,14 @@ class AddThread extends Component {
 
 const mapStateToProps = (store) => {
 	return {
-
+		loggedInUser : store.user.loggedInUser
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({
-		addThread
+		addThread,
+		getUser
 	}, dispatch)
 }
 

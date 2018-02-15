@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, {PropTypes} from 'react';
 
-
-class ViewThreadPage extends Component {
+export default class ThreadDetail extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
-    return(
+    return (
       <div className="container">
         <div className="thread-detail">
             <div className="thread-title">
@@ -69,8 +69,9 @@ class ViewThreadPage extends Component {
 
 
       </div>
-    )
+    );
   }
 }
 
-export default ViewThreadPage
+ThreadDetail.propTypes = {
+};

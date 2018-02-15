@@ -7,18 +7,18 @@ import LoginPage from './modules/Login';
 import RegisterPage from './modules/Register';
 
 import AddThread from './modules/Threads/addThread';
-import ViewThreadPage from './modules/Threads/view';
+import ThreadListPage from './modules/Threads/index';
 
 import UserProfile from './modules/Users/Profile';
 
 export default (
 	<Route path="/" component={App}>
-		<IndexRoute component={Homepage} />
+		<IndexRoute component={ThreadListPage} />
 		<Route path="/login" component={LoginPage} />
 		<Route path="/register" component={RegisterPage} />
 
 		<Route path="/thread/add" component={AddThread} />
-		<Route path="/thread/view" component={ViewThreadPage} />
+		<Route path="/thread/view" component={ThreadListPage} />
 
 		<Route path="/profile/:id" component={UserProfile} />
 	</Route>

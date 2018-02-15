@@ -8,3 +8,11 @@ export function add(data) {
     .catch(err => (reject(err)));
   });
 }
+
+export function getAll() {
+  return new Promise((resolve, reject) => {
+    axios.get(APIConstants.THREADS)
+    .then(res => (resolve(res.data)))
+    .catch(err => (reject(err)));
+  });
+}
