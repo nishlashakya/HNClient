@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import TimeAgo from 'react-timeago';
+import { Link } from 'react-router';
 
 import { getAll as getAllThreads } from '../../actions/threadActions';
 
@@ -22,20 +24,23 @@ class ThreadListPage extends Component {
           {threads.map((thread, id) => {
             console.log(',,,,,123,,,,,,,,,,', thread);
             return (
-            <li className="thread-list-item" key={id}>
-              <div className="thread-title">
-                {thread.title}&nbsp;
-                <span className="thread-link-domain">
-                  ({thread.url})
-                </span>
-              </div>
-              <div className="thread-meta">
-                <span className="thread-points">{thread.points} points</span> by&nbsp;
-                <span className="thread-owner">{thread.createdBy}</span>&nbsp;
-                <span className="thread-date">25 mins ago</span> |&nbsp;
-                <span className="thread-comments">3 comments</span>
-              </div>
-            </li>)
+              <Link to={`/thread/${thread._id}`}  key={id}>
+              <li className="thread-list-item">
+                  <div className="thread-title">
+                    {thread.title}&nbsp;
+                    <span className="thread-link-domain">
+                      (<a href={thread.url} target="_blank">{thread.url}</a>)
+                    </span>
+                  </div>
+                <div className="thread-meta">
+                  <span className="thread-points">{thread.points} points</span> by&nbsp;
+                  <span className="thread-owner">{thread.createdBy}</span>&nbsp;
+                  <TimeAgo date={thread.createdDate} /> | &nbsp;
+                  <span className="thread-comments">3 comments</span>
+                </div>
+              </li>
+            </Link>
+            )
           })}
 				</ol>
 			</div>

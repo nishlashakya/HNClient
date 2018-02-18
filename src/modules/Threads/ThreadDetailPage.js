@@ -1,24 +1,35 @@
 import React, {PropTypes} from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import TimeAgo from 'react-timeago';
 
-export default class ThreadDetail extends React.Component {
+import { get as getThreadDetail } from '../../actions/threadActions';
+
+class ThreadDetailPage extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  componentDidMount = () => {
+    this.props.getThreadDetail(this.props.params.id);
+  }
+
   render() {
+    console.log('..............', this.props);
+    const thread = this.props.threadDetail;
     return (
       <div className="container">
         <div className="thread-detail">
             <div className="thread-title">
-              WebAssembly support now shipping in all major browsers&nbsp;
+            {thread.title}&nbsp;
               <span className="thread-link-domain">
-                (facebook.com)
+                ({thread.url})
               </span>
             </div>
             <div className="thread-meta">
-              <span className="thread-points">25 points</span> by&nbsp;
-              <span className="thread-owner">nishlapunk</span>&nbsp;
-              <span className="thread-date">25 mins ago</span> |&nbsp;
+              <span className="thread-points">{thread.points} points</span> by&nbsp;
+              <span className="thread-owner">{thread.createdBy}</span>&nbsp;
+              <TimeAgo className="thread-date" date={thread.createdDate}></TimeAgo> |&nbsp;
               <span className="thread-comments">3 comments</span>
             </div>
 
@@ -73,5 +84,19 @@ export default class ThreadDetail extends React.Component {
   }
 }
 
-ThreadDetail.propTypes = {
+const mapStateToProps = (store) => {
+  return {
+    threadDetail: store.thread.thread
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    getThreadDetail
+  }, dispatch);
+}
+
+ThreadDetailPage.propTypes = {
 };
+
+export default connect(mapStateToProps, mapDispatchToProps)(ThreadDetailPage);

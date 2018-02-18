@@ -1,6 +1,7 @@
 import { getUser, logoutUser } from '../utils/sessionManager'
 const initialState = {
-  threads: []
+  threads: [],
+  thread: {}
 }
 
 export function threadReducer(state=initialState, action) {
@@ -16,6 +17,12 @@ export function threadReducer(state=initialState, action) {
       return {
         ...state,
         threads: action.res
+      }
+
+    case 'GET_THREAD_SUCCESS':
+      return {
+        ...state,
+        thread: action.res
       }
 
 		default:

@@ -8,6 +8,7 @@ import RegisterPage from './modules/Register';
 
 import AddThread from './modules/Threads/addThread';
 import ThreadListPage from './modules/Threads/index';
+import ThreadDetailPage from './modules/Threads/ThreadDetailPage';
 
 import UserProfile from './modules/Users/Profile';
 
@@ -19,6 +20,7 @@ export default (
 
 		<Route path="/thread/add" component={AddThread} />
 		<Route path="/thread/view" component={ThreadListPage} />
+		<Route path="/thread/:id" component={ThreadDetailPage} />
 
 		<Route path="/profile/:id" component={UserProfile} />
 	</Route>

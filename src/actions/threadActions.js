@@ -59,3 +59,32 @@ function getAllError(err) {
     err
   }
 }
+export function get(id) {
+  return dispatch => {
+    return new Promise((resolve, reject) => {
+      api.get(id)
+      .then(res => {
+        dispatch(getSuccess(res));
+        resolve(res);
+      })
+      .catch(err => {
+        dispatch(getError(err));
+        reject(err);
+      })
+    });
+  }
+}
+
+function getSuccess(res) {
+  return {
+    type: 'GET_THREAD_SUCCESS',
+    res
+  }
+}
+
+function getError(err) {
+  return {
+    type: 'GET_THREAD_FAIL',
+    err
+  }
+}

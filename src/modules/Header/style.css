@@ -166,3 +166,11 @@ hr.footer-hr {
 .footer-text {
 	text-align: center;
 }
+
+a {
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: none;
+}
