@@ -5,4 +5,5 @@ export default {
   USERS                 : SERVER_URL + 'users/',
 
   THREADS               : SERVER_URL + 'threads/',
+  COMMENTS              : SERVER_URL + 'comments/',
 };

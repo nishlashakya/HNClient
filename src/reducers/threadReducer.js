@@ -1,4 +1,4 @@
-import { getUser, logoutUser } from '../utils/sessionManager'
+import { getUser } from '../utils/sessionManager'
 const initialState = {
   threads: [],
   thread: {}

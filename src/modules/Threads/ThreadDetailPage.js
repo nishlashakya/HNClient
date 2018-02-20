@@ -4,19 +4,53 @@ import { bindActionCreators } from 'redux';
 import TimeAgo from 'react-timeago';
 
 import { get as getThreadDetail } from '../../actions/threadActions';
+import {
+  add as addComment,
+  get as getAllComments
+ } from '../../actions/commentAction';
+import { getUser } from '../../utils/sessionManager';
 
 class ThreadDetailPage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      comment : ''
+    }
   }
 
   componentDidMount = () => {
-    this.props.getThreadDetail(this.props.params.id);
+    this.props.getThreadDetail(this.props.params.id)
+    .then((thread) => {
+      this.props.getAllComments(thread._id);
+    })
+  }
+
+  handleChange = (e) => {
+    e.preventDefault();
+    this.setState({
+      [e.target.name] : e.target.value
+    })
+  }
+
+  addComment = (e) => {
+    e.preventDefault();
+    const payload = {
+      comment : this.state.comment,
+      threadId: this.props.threadDetail._id,
+      commentedBy: this.props.loggedInUser.username
+    }
+    this.props.addComment(payload)
+    .then((res) => {
+      this.setState({
+        comment : ''
+      });
+      this.props.getAllComments(payload.threadId);
+    })
   }
 
   render() {
-    console.log('..............', this.props);
     const thread = this.props.threadDetail;
+    const comments = this.props.comments || [];
     return (
       <div className="container">
         <div className="thread-detail">
@@ -34,51 +68,33 @@ class ThreadDetailPage extends React.Component {
             </div>
 
             <form>
-              <textarea rows="4" cols="50">
+              <textarea rows="4" cols="50" name="comment" value={this.state.comment} onChange={this.handleChange}>
+
               </textarea>
               <br/>
               <p className="thread-meta"> If you haven't already, would you mind reading about HN's <a href="https://news.ycombinator.com/newswelcome.html">approach to comments</a> and <a href="https://news.ycombinator.com/newswelcome.html">site guidelines</a>? </p>
-              <input id="comment-button" type="submit" value="Add Comment" />
+              <input id="comment-button" type="submit" value="Add Comment" onClick={this.addComment} />
             </form>
         </div>
 
 
         <div className="thread-comments">
-          <div className="comment">
-            <div className="thread-comment-meta">
-              <span className="thread-comment-owner">coolboysumit</span>|&nbsp;
-              <span className="thread-comment-date">2 mins ago</span> &nbsp;
-            </div>
-            <div className="thread-comment">
-              this is a comment from a very cool boy Sumit.
-              What this post is lamenting is the loss of some actor like MECC. We had great software written for students (not adults) at one point. Many of us here have used it and fondly remember it. Titles like Oregon Trail, Reader Rabbit, etc...
-            </div>
-          </div>
-
-
-          <div className="comment">
-            <div className="thread-comment-meta">
-              <span className="thread-comment-owner">beautifulEsha</span>|&nbsp;
-              <span className="thread-comment-date">8 mins ago</span> &nbsp;
-            </div>
-            <div className="thread-comment">
-              Ive told this story before: Back when I was in college, I had a summer internship at a place that was a service center for the K-12 schools in a large county. Microcomputers were the big new thing. We had a facility with one of each kind of computer (Commodore, Apple, Radio Shack, etc.) and all the software we could lay their hands on. Teachers could come in and try things out.
-            </div>
-          </div>
-
-          <div className="comment">
-            <div className="thread-comment-meta">
-              <span className="thread-comment-owner">coolboysumit</span>|&nbsp;
-              <span className="thread-comment-date">2 mins ago</span> &nbsp;
-            </div>
-            <div className="thread-comment">
-              this is a comment from a very cool boy Sumit.
-              What this post is lamenting is the loss of some actor like MECC. We had great software written for students (not adults) at one point. Many of us here have used it and fondly remember it. Titles like Oregon Trail, Reader Rabbit, etc...
-            </div>
-          </div>
+          {
+            comments.map((comment, id) => {
+              return (
+                <div className="comment">
+                  <div className="thread-comment-meta">
+                    <span className="thread-comment-owner">{comment.commentedBy}</span>|&nbsp;
+                    <TimeAgo className="thread-comment-date" date={comment.createdDate}></TimeAgo> &nbsp;
+                  </div>
+                  <div className="thread-comment">
+                    {comment.comment}
+                  </div>
+                </div>
+              )
+            })
+          }
         </div>
-
-
       </div>
     );
   }
@@ -86,13 +102,18 @@ class ThreadDetailPage extends React.Component {
 
 const mapStateToProps = (store) => {
   return {
-    threadDetail: store.thread.thread
+    threadDetail: store.thread.thread,
+    loggedInUser: store.user.loggedInUser,
+    comments: store.comment.comments
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getThreadDetail
+    getThreadDetail,
+    addComment,
+    getUser,
+    getAllComments
   }, dispatch);
 }
 
