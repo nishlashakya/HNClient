@@ -79,7 +79,7 @@ body {
 .comment {
 	margin-bottom: 10px;
 }
-
+/*
 input {
   padding: 5px 30px;
   margin: 10px 0;
@@ -96,7 +96,7 @@ input:focus {
   border: 1px solid #ff6600;
   border-radius: 4px;
   box-sizing: border-box;
-}
+}*/
 
 input[type=submit] {
   background-color: #ff6600;

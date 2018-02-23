@@ -44,7 +44,6 @@ class ThreadDetailPage extends React.Component {
       commentedBy: this.props.loggedInUser.username
     }
     const commentCount = parseInt(this.props.threadDetail.commentCount);
-    console.log('commentCount..............', commentCount);
     this.props.addCommentCount(payload.threadId, {commentCount: commentCount + 1});
     this.props.addComment(payload)
     .then((res) => {
@@ -79,7 +78,7 @@ class ThreadDetailPage extends React.Component {
 
               </textarea>
               <br/>
-              <p className="thread-meta"> If you haven't already, would you mind reading about HN's <a href="https://news.ycombinator.com/newswelcome.html">approach to comments</a> and <a href="https://news.ycombinator.com/newswelcome.html">site guidelines</a>? </p>
+              <p className="thread-meta"> If you haven't already, would you mind reading about HN's <a href="https://news.ycombinator.com/newswelcome.html" target="__blank">approach to comments</a> and <a href="https://news.ycombinator.com/newswelcome.html" target="__blank">site guidelines</a>? </p>
               <input id="comment-button" type="submit" value="Add Comment" onClick={this.addComment} />
             </form>
         </div>

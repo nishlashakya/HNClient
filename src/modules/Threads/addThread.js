@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router'
 
 import { add as addThread } from '../../actions/threadActions';
 import { getUser } from '../../utils/sessionManager';
@@ -18,10 +19,6 @@ class AddThread extends Component {
 		}
 	}
 
-	componentDidMount = () => {
-		this.props.getUser();
-	}
-
 	handleChange = (e) => {
 		e.preventDefault();
 		this.setState({
@@ -34,41 +31,43 @@ class AddThread extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		console.log('states..........', this.state.fields);
 		this.props.addThread(this.state.fields)
 		.then((res) => {
-			console.log('jjjjjjjjjjj', res);
+			this.props.router.push('/');
 		})
 		.catch((err) => {
-			console.log('ggggggggggggg', err);
 		})
 	}
 
 	render() {
 		return (
 			<div className="container">
-				<h3><b>Submit</b></h3><br />
-				<div className="well submit_form">
+				<form>
 
-
-
-
-
-					<form>
-						<div className="form-row">
-							<label> Title: </label>
-							<span className="form-input"><input type="text" name="title" value={this.state.fields.title} onChange={this.handleChange}/></span>
-						</div>
-						<br/>
-						<div className="form-row">
-							<label> url: </label>
-							<input type="text" name="url" value={this.state.fields.url} onChange={this.handleChange} />
-						</div>
-						<br/>
-						<input type="submit" value="Submit" onClick={this.handleSubmit} />
-					</form>
-				</div>
-			</div>
+				<table className="lightFont">
+					<tbody>
+						<tr>
+							<td>title</td>
+							<td><input type="text" name="title" value={this.state.fields.title} onChange={this.handleChange}/></td>
+						</tr>
+						<tr>
+							<td>url</td>
+							<td><input type="text" name="url" value={this.state.fields.url} onChange={this.handleChange} /></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td className="thread-meta">
+								Leave url blank to submit a question for discussion. If there
+								is no url, the text (if any) will appear at the top of the
+								thread.<br/><br/>
+								You can also submit via <a href="https://news.ycombinator.com/bookmarklet.html" target="__blank"><u>bookmarklet</u></a>.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<input type="submit" value="Submit" onClick={this.handleSubmit} />
+			</form>
+		</div>
 		);
 	}
 }
@@ -81,9 +80,8 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({
-		addThread,
-		getUser
+		addThread
 	}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddThread);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AddThread));
