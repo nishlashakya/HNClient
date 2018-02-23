@@ -24,6 +24,12 @@ export function threadReducer(state=initialState, action) {
         ...state,
         thread: action.res
       }
+      
+    case 'UPDATE_THREAD_SUCCESS':
+      return {
+        ...state,
+        thread: action.res
+      }
 
 		default:
 			return {...state}

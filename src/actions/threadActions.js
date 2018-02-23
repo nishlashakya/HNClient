@@ -59,6 +59,7 @@ function getAllError(err) {
     err
   }
 }
+
 export function get(id) {
   return dispatch => {
     return new Promise((resolve, reject) => {
@@ -85,6 +86,36 @@ function getSuccess(res) {
 function getError(err) {
   return {
     type: 'GET_THREAD_FAIL',
+    err
+  }
+}
+
+export function update(id, payload) {
+  return dispatch => {
+    return new Promise((resolve, reject) => {
+      api.update(id, payload)
+      .then(res => {
+        dispatch(updateSuccess(res));
+        resolve(res);
+      })
+      .catch(err => {
+        dispatch(updateError(err));
+        reject(err);
+      })
+    });
+  }
+}
+
+function updateSuccess(res) {
+  return {
+    type: 'UPDATE_THREAD_SUCCESS',
+    res
+  }
+}
+
+function updateError(err) {
+  return {
+    type: 'UPDATE_THREAD_FAIL',
     err
   }
 }

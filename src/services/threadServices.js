@@ -24,3 +24,11 @@ export function get(id) {
     .catch(err => (reject(err)));
   });
 }
+
+export function update(id, payload) {
+  return new Promise((resolve, reject) => {
+    axios.put(APIConstants.THREADS + id, payload)
+    .then(res => (resolve(res.data)))
+    .catch(err => (reject(err)));
+  });
+}

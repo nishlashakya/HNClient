@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import TimeAgo from 'react-timeago';
 
-import { get as getThreadDetail } from '../../actions/threadActions';
+import {
+  get as getThreadDetail,
+  update as addCommentCount
+} from '../../actions/threadActions';
+
 import {
   add as addComment,
   get as getAllComments
@@ -39,6 +43,9 @@ class ThreadDetailPage extends React.Component {
       threadId: this.props.threadDetail._id,
       commentedBy: this.props.loggedInUser.username
     }
+    const commentCount = parseInt(this.props.threadDetail.commentCount);
+    console.log('commentCount..............', commentCount);
+    this.props.addCommentCount(payload.threadId, {commentCount: commentCount + 1});
     this.props.addComment(payload)
     .then((res) => {
       this.setState({
@@ -112,6 +119,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getThreadDetail,
     addComment,
+    addCommentCount,
     getUser,
     getAllComments
   }, dispatch);

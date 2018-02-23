@@ -49,6 +49,11 @@ class AddThread extends Component {
 			<div className="container">
 				<h3><b>Submit</b></h3><br />
 				<div className="well submit_form">
+
+
+
+
+
 					<form>
 						<div className="form-row">
 							<label> Title: </label>

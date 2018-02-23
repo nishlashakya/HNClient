@@ -22,7 +22,7 @@ class ThreadListPage extends Component {
 				<ol className="thread-list">
           {threads.map((thread, id) => {
             return (
-              <li className="thread-list-item">
+              <li className="thread-list-item" key={id}>
                   <div className="thread-title">
                     {thread.title}&nbsp;
                     <span className="thread-link-domain">
@@ -34,7 +34,7 @@ class ThreadListPage extends Component {
                   <span className="thread-points">{thread.points} points</span> by&nbsp;
                   <span className="thread-owner">{thread.createdBy}</span>&nbsp;
                   <TimeAgo date={thread.createdDate} /> | &nbsp;
-                  <span className="thread-comments">3 comments</span>
+                  <span className="thread-comments">{thread.commentCount} comments</span>
                 </div>
               </Link>
               </li>
