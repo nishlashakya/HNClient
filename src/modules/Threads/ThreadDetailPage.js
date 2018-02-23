@@ -64,7 +64,7 @@ class ThreadDetailPage extends React.Component {
               <span className="thread-points">{thread.points} points</span> by&nbsp;
               <span className="thread-owner">{thread.createdBy}</span>&nbsp;
               <TimeAgo className="thread-date" date={thread.createdDate}></TimeAgo> |&nbsp;
-              <span className="thread-comments">3 comments</span>
+              <span className="thread-comments">{comments.length} comments</span>
             </div>
 
             <form>
@@ -82,7 +82,7 @@ class ThreadDetailPage extends React.Component {
           {
             comments.map((comment, id) => {
               return (
-                <div className="comment">
+                <div className="comment" key={id}>
                   <div className="thread-comment-meta">
                     <span className="thread-comment-owner">{comment.commentedBy}</span>|&nbsp;
                     <TimeAgo className="thread-comment-date" date={comment.createdDate}></TimeAgo> &nbsp;

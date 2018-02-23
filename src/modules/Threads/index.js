@@ -16,15 +16,12 @@ class ThreadListPage extends Component {
   }
 
   render() {
-    console.log('pppppppppppppppppp', this.props);
     const threads = this.props.threads;
     return(
       <div className="App">
 				<ol className="thread-list">
           {threads.map((thread, id) => {
-            console.log(',,,,,123,,,,,,,,,,', thread);
             return (
-              <Link to={`/thread/${thread._id}`}  key={id}>
               <li className="thread-list-item">
                   <div className="thread-title">
                     {thread.title}&nbsp;
@@ -32,14 +29,15 @@ class ThreadListPage extends Component {
                       (<a href={thread.url} target="_blank">{thread.url}</a>)
                     </span>
                   </div>
+                <Link to={`/thread/${thread._id}`} key={id}>
                 <div className="thread-meta">
                   <span className="thread-points">{thread.points} points</span> by&nbsp;
                   <span className="thread-owner">{thread.createdBy}</span>&nbsp;
                   <TimeAgo date={thread.createdDate} /> | &nbsp;
                   <span className="thread-comments">3 comments</span>
                 </div>
+              </Link>
               </li>
-            </Link>
             )
           })}
 				</ol>
