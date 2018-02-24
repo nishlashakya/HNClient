@@ -24,7 +24,7 @@ class Header extends Component {
 				<div className="container-fluid">
 					<div className="navbar-header">
 
-						<Link to={'/'} className="navbar-brand"><img src="images/logo.gif" width="18"/><b>Hacker News </b></Link>
+						<Link to={'/'} className="navbar-brand"><img src="/images/favicon.ico" width="18"/><b>Hacker News </b></Link>
 						<span className="navbar-link">
 								<Link to={'#'}>New </Link>&nbsp;|&nbsp;
 								<Link to={'#'}>Comments</Link>&nbsp;|&nbsp;
@@ -52,7 +52,6 @@ class Header extends Component {
 }
 
 const mapStateToProps = (store) => {
-  console.log('..................', store.user.loggedInUser);
   return {
     loggedInUser: store.user.loggedInUser
   }

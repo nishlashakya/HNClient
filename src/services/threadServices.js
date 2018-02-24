@@ -1,6 +1,10 @@
 import axios from 'axios';
 import APIConstants from '../constants/APIConstants';
 
+import { getUserToken } from '../utils/sessionManager';
+
+axios.defaults.headers.Authorization = getUserToken();
+
 export function add(data) {
   return new Promise((resolve, reject) => {
     axios.post(APIConstants.THREADS, data)

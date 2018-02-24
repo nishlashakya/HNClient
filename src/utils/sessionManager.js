@@ -13,3 +13,14 @@ export function logoutUser() {
   localStorage.clear();
   window.location = '/'
 }
+
+export function saveUserToken(token) {
+  localStorage.setItem('token', JSON.stringify(token));
+}
+
+export function getUserToken() {
+  if (localStorage.getItem('token')) {
+    return JSON.parse(localStorage.getItem('token'));
+  }
+    return null;
+}

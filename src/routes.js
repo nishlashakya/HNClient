@@ -12,16 +12,22 @@ import ThreadDetailPage from './modules/Threads/ThreadDetailPage';
 
 import UserProfile from './modules/Users/Profile';
 
+function requireAuth(nextState, replace, callback) {
+	const login = localStorage.getItem('user');
+	if (!login) replace ('/login')
+	return callback()
+}
+
 export default (
 	<Route path="/" component={App}>
 		<IndexRoute component={ThreadListPage} />
 		<Route path="/login" component={LoginPage} />
 		<Route path="/register" component={RegisterPage} />
 
-		<Route path="/thread/add" component={AddThread} />
+		<Route path="/thread/add" component={AddThread} onEnter={requireAuth}/>
 		<Route path="/thread/view" component={ThreadListPage} />
 		<Route path="/thread/:id" component={ThreadDetailPage} />
 
-		<Route path="/profile/:id" component={UserProfile} />
+		<Route path="/profile/:id" component={UserProfile} onEnter={requireAuth} />
 	</Route>
 )

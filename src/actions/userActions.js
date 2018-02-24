@@ -60,12 +60,38 @@ function registerUserError(err) {
   }
 }
 
+export function updateUser(id, data) {
+  return dispatch => {
+    return new Promise((resolve, reject) => {
+      userServices.updateUser(id, data)
+      .then((res) => {
+        dispatch(updateUserSuccess(res));
+        resolve(res);
+      })
+      .catch((err) => {
+        dispatch(updateUserError(err));
+        reject(err);
+      })
+    });
+  }
+}
+
+function updateUserSuccess(res) {
+  return {
+    type: 'UPDATE_USER_SUCCESS',
+    res
+  }
+}
+
+function updateUserError(err) {
+  return {
+    type: 'UPDATE_USER_ERROR',
+    err
+  }
+}
+
 export function logoutUser() {
   return {
     type: 'LOGOUT_USER'
   }
-}
-
-export function getUser() {
-
 }

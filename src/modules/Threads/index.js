@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import TimeAgo from 'react-timeago';
+import moment from 'moment';
 import { Link } from 'react-router';
 
 import { getAll as getAllThreads } from '../../actions/threadActions';
@@ -33,7 +33,7 @@ class ThreadListPage extends Component {
                 <div className="thread-meta">
                   <span className="thread-points">{thread.points} points</span> by&nbsp;
                   <span className="thread-owner">{thread.createdBy}</span>&nbsp;
-                  <TimeAgo date={thread.createdDate} /> | &nbsp;
+                  <span className="thread-comment-date">{moment(thread.createdDate).fromNow()}</span> &nbsp;
                   <span className="thread-comments">{thread.commentCount} comments</span>
                 </div>
               </Link>

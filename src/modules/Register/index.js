@@ -37,7 +37,7 @@ class RegisterPage extends Component {
 		return (
 			<div className="container">
 				<h3>Register</h3><br />
-				<div className="well register_form">
+				<div className="register_form">
 					<form>
 						<div className="form-row">
 							<label> Username: </label>
@@ -59,7 +59,7 @@ class RegisterPage extends Component {
 							<input type="password" name="rePassword" value={this.state.rePassword} onChange={this.handleChange} />
 						</div>
 						<br/>
-						<button type="submit" onClick={this.handleSubmit}> Submit </button>
+						<input type="submit" onClick={this.handleSubmit} value="Register"/>
 					</form>
 				</div>
 			</div>

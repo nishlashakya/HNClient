@@ -47,10 +47,10 @@ body {
 	color: #000;
 	text-decoration: none;
 }
-#myNav .navbar-link>a:hover {
+/*#myNav .navbar-link>a:hover {
 	color: #fff;
 	text-decoration: none;
-}
+}*/
 
 .thread-meta, .thread-link-domain, .thread-comment-meta {
 	font-size: 10px;
@@ -70,11 +70,11 @@ body {
 	margin-bottom: 7%;
 }
 
-.login_form, .register_form, .submit_form {
+/*.login_form, .register_form, .submit_form {
 	width: 400px;
 	align-self: center;
 	margin: auto;
-}
+}*/
 
 .comment {
 	margin-bottom: 10px;
@@ -99,7 +99,7 @@ input:focus {
 }*/
 
 input[type=submit] {
-  background-color: #ff6600;
+  /*background-color: #ff6600;
   border: none;
   color: black;
   padding: 5px 10px;
@@ -107,17 +107,26 @@ input[type=submit] {
   margin: 2px 2px;
   cursor: pointer;
 	width: auto;
-	height: auto;
-}
-
-input[type=submit]:hover {
-  background-color: #cf5300;
+	height: auto;*/
+	align-items: flex-start;
+	text-align: center;
+	cursor: default;
+	color: buttontext;
+	background-color: buttonface;
+	/*box-sizing: border-box;*/
+	padding: 2px 6px 3px;
+	border-width: 2px;
+	/*border-style: outset;*/
+	border-color: buttonface;
+	border-image: initial;
+	font-family: monospace;
+	font-size: 10pt;
 }
 
 #comment-button {
 	height: auto;
 	width: auto;
-	padding: 5px 10px;
+	padding: 0px 5px;
 	text-align: center;
 }
 

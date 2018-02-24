@@ -1,7 +1,8 @@
 import React, {PropTypes} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import TimeAgo from 'react-timeago';
+import { withRouter } from 'react-router'
+import moment from 'moment';
 
 import {
   get as getThreadDetail,
@@ -38,20 +39,24 @@ class ThreadDetailPage extends React.Component {
 
   addComment = (e) => {
     e.preventDefault();
-    const payload = {
-      comment : this.state.comment,
-      threadId: this.props.threadDetail._id,
-      commentedBy: this.props.loggedInUser.username
+    if (!this.props.loggedInUser) {
+      this.props.router.push('/login');
+    } else {
+      const payload = {
+        comment : this.state.comment,
+        threadId: this.props.threadDetail._id,
+        commentedBy: this.props.loggedInUser.username
+      }
+      const commentCount = parseInt(this.props.threadDetail.commentCount);
+      this.props.addCommentCount(payload.threadId, {commentCount: commentCount + 1});
+      this.props.addComment(payload)
+      .then((res) => {
+        this.setState({
+          comment : ''
+        });
+        this.props.getAllComments(payload.threadId);
+      })
     }
-    const commentCount = parseInt(this.props.threadDetail.commentCount);
-    this.props.addCommentCount(payload.threadId, {commentCount: commentCount + 1});
-    this.props.addComment(payload)
-    .then((res) => {
-      this.setState({
-        comment : ''
-      });
-      this.props.getAllComments(payload.threadId);
-    })
   }
 
   render() {
@@ -69,7 +74,7 @@ class ThreadDetailPage extends React.Component {
             <div className="thread-meta">
               <span className="thread-points">{thread.points} points</span> by&nbsp;
               <span className="thread-owner">{thread.createdBy}</span>&nbsp;
-              <TimeAgo className="thread-date" date={thread.createdDate}></TimeAgo> |&nbsp;
+              <span className="thread-date">{moment(thread.createdDate).fromNow()}</span> |&nbsp;
               <span className="thread-comments">{comments.length} comments</span>
             </div>
 
@@ -90,8 +95,8 @@ class ThreadDetailPage extends React.Component {
               return (
                 <div className="comment" key={id}>
                   <div className="thread-comment-meta">
-                    <span className="thread-comment-owner">{comment.commentedBy}</span>|&nbsp;
-                    <TimeAgo className="thread-comment-date" date={comment.createdDate}></TimeAgo> &nbsp;
+                    <span className="thread-comment-owner">{comment.commentedBy}</span>&nbsp;|&nbsp;
+                    <span className="thread-comment-date">{moment(comment.createdDate).fromNow()}</span> &nbsp;
                   </div>
                   <div className="thread-comment">
                     {comment.comment}
@@ -125,6 +130,14 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 ThreadDetailPage.propTypes = {
+  loggedInUser        : PropTypes.object.isRequired,
+  threadDetail        : PropTypes.object.isRequired,
+  comments            : PropTypes.array.isRequired,
+  getThreadDetail     : PropTypes.func.isRequired,
+  addComment          : PropTypes.func.isRequired,
+  addCommentCount     : PropTypes.func.isRequired,
+  getUser             : PropTypes.func.isRequired,
+  getAllComments      : PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ThreadDetailPage);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ThreadDetailPage));

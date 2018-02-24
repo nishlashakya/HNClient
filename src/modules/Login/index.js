@@ -24,11 +24,9 @@ class LoginPage extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		console.log('.............state', this.state);
 		this.props.loginUser(this.state)
 		.then((res) => {
       this.props.router.push('/');
-			console.log('logged in..............', res);
 		})
 	}
 
@@ -36,7 +34,7 @@ class LoginPage extends Component {
 		return (
 			<div className="container">
 				<h3><b>Login</b></h3><br />
-				<div className="well login_form">
+				<div className="login_form">
 					<form>
 						<div className="form-row">
 							<label> Username: </label>

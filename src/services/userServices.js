@@ -1,8 +1,6 @@
 import axios from 'axios';
 import APIConstants from '../constants/APIConstants';
 
-// axios.default.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
-
 export function loginUser(data) {
   return new Promise((resolve, reject) => {
     axios.post(APIConstants.LOGIN, data)
@@ -22,6 +20,14 @@ export function registerUser(data) {
 export function getUser(id) {
   return new Promise((resolve, reject) => {
     axios.get(APIConstants.USERS + id)
+    .then((res) => (resolve(res)))
+    .catch((err) => (reject(err)));
+  });
+}
+
+export function updateUser(id, data) {
+  return new Promise((resolve, reject) => {
+    axios.put(APIConstants.USERS + id, data)
     .then((res) => (resolve(res)))
     .catch((err) => (reject(err)));
   });
