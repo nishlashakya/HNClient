@@ -27,6 +27,7 @@ class RegisterPage extends Component {
 		e.preventDefault();
 		this.props.registerUser(this.state)
 		.then((res) => {
+			this.props.router.push('/login');
 			console.log('registered successfully!');
 		})
 		.catch((err) => {
@@ -54,10 +55,10 @@ class RegisterPage extends Component {
 							<input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
 						</div>
 						<br/>
-						<div className="form-row">
+						{/* <div className="form-row">
 							<label> Re-Type Password: </label>
 							<input type="password" name="rePassword" value={this.state.rePassword} onChange={this.handleChange} />
-						</div>
+						</div> */}
 						<br/>
 						<input type="submit" onClick={this.handleSubmit} value="Register"/>
 					</form>

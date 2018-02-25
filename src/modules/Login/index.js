@@ -37,12 +37,12 @@ class LoginPage extends Component {
 				<div className="login_form">
 					<form>
 						<div className="form-row">
-							<label> Username: </label>
+							<label> Username: </label>&nbsp;
 							<span className="form-input"><input type="text" name="username" value={this.state.username} onChange={this.handleChange}/></span>
 						</div>
 						<br/>
 						<div className="form-row">
-							<label> Password: </label>
+							<label> Password: </label>&nbsp;
 							<input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
 						</div>
 						<br/>

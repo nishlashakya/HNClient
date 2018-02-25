@@ -183,3 +183,10 @@ a {
 a:hover{
 	text-decoration: none;
 }
+.register_form input {
+	float: right;
+	margin-right: 740px;
+}
+.register_form input[type=submit] {
+	float: none;
+}

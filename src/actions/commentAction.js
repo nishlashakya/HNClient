@@ -1,7 +1,6 @@
 import * as api from '../services/commentServices';
 
 export function add(data) {
-  console.log('here...........', data);
   return dispatch => {
     return new Promise((resolve, reject) => {
       api.add(data)
@@ -31,7 +30,6 @@ function addError(err) {
   }
 }
 export function get(threadId) {
-  console.log('>>>>>>>>>>>>>', threadId);
   return dispatch => {
     return new Promise((resolve, reject) => {
       api.get(threadId)
