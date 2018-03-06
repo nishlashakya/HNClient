@@ -15,12 +15,9 @@ export function logoutUser() {
 }
 
 export function saveUserToken(token) {
-  localStorage.setItem('token', JSON.stringify(token));
+  localStorage.setItem('token', token);
 }
 
 export function getUserToken() {
-  if (localStorage.getItem('token')) {
-    return JSON.parse(localStorage.getItem('token'));
-  }
-    return null;
+  return localStorage.getItem('token');
 }

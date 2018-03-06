@@ -1,4 +1,4 @@
-const SERVER_URL = 'http://localhost:3031/';
+const SERVER_URL = 'https://dry-chamber-56474.herokuapp.com/';
 export default {
   LOGIN                 : SERVER_URL + 'users/login',
   REGISTER              : SERVER_URL + 'users/register',
