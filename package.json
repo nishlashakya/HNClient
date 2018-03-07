@@ -1,6 +1,6 @@
 {
   "name": "react-redux-boilerplate",
-  "homepage": "http://nishlashakya.github.io/projects/HNClient",
+  "homepage": "http://nishlashakya.github.io/HNClient",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
