@@ -19,7 +19,7 @@ function requireAuth(nextState, replace, callback) {
 }
 
 export default (
-	<Route path="/" component={App}>
+	<Route path={process.env.PUBLIC_URL + '/'} component={App}>
 		<IndexRoute component={ThreadListPage} />
 		<Route path="/login" component={LoginPage} />
 		<Route path="/register" component={RegisterPage} />
