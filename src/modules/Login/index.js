@@ -26,7 +26,7 @@ class LoginPage extends Component {
 		e.preventDefault();
 		this.props.loginUser(this.state)
 		.then((res) => {
-      this.props.router.push('/');
+      this.props.router.push('/HNClient');
 		})
 	}
 

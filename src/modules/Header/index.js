@@ -24,10 +24,10 @@ class Header extends Component {
 				<div className="container-fluid">
 					<div className="navbar-header">
 
-						<Link to={'/'} className="navbar-brand"><img src={process.env.PUBLIC_URL + '/static/hnfavicon.ico'} width="18"/><b>Hacker News </b></Link>
+						<Link to={'/HNClient'} className="navbar-brand"><img src={process.env.PUBLIC_URL + '/static/hnfavicon.ico'} width="18"/><b>Hacker News </b></Link>
 						<span className="navbar-link">
-								<Link to={'#'}>New </Link>&nbsp;|&nbsp;
-								<Link to={'#'}>Comments</Link>&nbsp;|&nbsp;
+								<Link to={'/HNClient'}>New </Link>&nbsp;|&nbsp;
+								{/* <Link to={'#'}>Comments</Link>&nbsp;|&nbsp; */}
 								<Link to={'/thread/add'}>Submit</Link>&nbsp;|&nbsp;
 						</span>
 					</div>
