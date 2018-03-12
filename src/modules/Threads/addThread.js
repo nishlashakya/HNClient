@@ -33,7 +33,7 @@ class AddThread extends Component {
 		e.preventDefault();
 		this.props.addThread(this.state.fields)
 		.then((res) => {
-			this.props.router.push('/');
+			this.props.router.push('/HNClient/');
 		})
 		.catch((err) => {
 		})
