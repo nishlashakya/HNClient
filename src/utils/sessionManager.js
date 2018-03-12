@@ -11,7 +11,7 @@ export function getUser() {
 
 export function logoutUser() {
   localStorage.clear();
-  window.location = '/'
+  window.location = '/HNClient'
 }
 
 export function saveUserToken(token) {
