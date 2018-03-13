@@ -24,7 +24,7 @@ class Header extends Component {
 				<div className="container-fluid">
 					<div className="navbar-header">
 
-						<Link to={'/HNClient/'} className="navbar-brand"><img src={process.env.PUBLIC_URL + '/hnfavicon.ico'} width="18"/><b>Hacker News </b></Link>
+						<Link to={process.env.PUBLIC_URL} className="navbar-brand"><img src={process.env.PUBLIC_URL + '/hnfavicon.ico'} width="18"/><b>Hacker News </b></Link>
 						<span className="navbar-link">
 								<Link to={'/HNClient/'}>New </Link>&nbsp;|&nbsp;
 								{/* <Link to={'#'}>Comments</Link>&nbsp;|&nbsp; */}
@@ -41,7 +41,7 @@ class Header extends Component {
             :
             <ul className="nav navbar-nav navbar-right">
               <li><Link to={'/profile/'+ this.props.loggedInUser._id}>{this.props.loggedInUser.username}</Link></li>
-              <li><Link onClick={this.handleLogout}>Logout</Link></li>
+              <li><Link to="#" onClick={this.handleLogout}>Logout</Link></li>
             </ul>
           }
 					</div>
