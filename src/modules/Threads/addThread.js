@@ -36,6 +36,7 @@ class AddThread extends Component {
 			this.props.router.push('/HNClient/');
 		})
 		.catch((err) => {
+			this.props.router.push('/HNClient/thread/add/');
 		})
 	}
 
